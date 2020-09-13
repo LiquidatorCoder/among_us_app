@@ -1,8 +1,10 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:among_us_app/generateButton.dart';
 import 'package:among_us_app/starPainter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,20 +22,17 @@ class _HomePageState extends State<HomePage> {
       double velocity = r.nextDouble() * 4;
       double opacity = radius / 4;
       starStack.add(
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 0.2, sigmaY: 0.2),
-          child: CustomPaint(
-            painter: StarPainter(
-                x: x,
-                y: y,
-                radius: radius,
-                velocity: velocity,
-                opacity: opacity),
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-            ),
+        // BackdropFilter(
+        // filter: ImageFilter.blur(sigmaX: 0.2, sigmaY: 0.2),
+        // child:
+        CustomPaint(
+          painter: StarPainter(
+              x: x, y: y, radius: radius, velocity: velocity, opacity: opacity),
+          child: Container(
+            height: MediaQuery.of(context).size.height,
           ),
         ),
+        // ),
       );
     }
     return starStack;
@@ -41,11 +40,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: stars(MediaQuery.of(context).size),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: GenerateButton(),
     );
   }
 }
