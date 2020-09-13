@@ -40,9 +40,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: MaterialButton(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            "assets/images/info_btn.png",
+            fit: BoxFit.contain,
+          ),
+          onPressed: () {},
+        ),
+        actions: <Widget>[
+          Container(
+            width: kToolbarHeight,
+            child: MaterialButton(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                "assets/images/share_btn.png",
+                fit: BoxFit.contain,
+              ),
+              onPressed: () {},
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: stars(MediaQuery.of(context).size),
       ),
