@@ -43,14 +43,46 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: MaterialButton(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
+        leading: PopupMenuButton<int>(
+          icon: Image.asset(
             "assets/images/info_btn.png",
             fit: BoxFit.contain,
           ),
-          onPressed: () {},
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 1,
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.settings_backup_restore),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text("Reset"),
+                ],
+              ),
+            ),
+            PopupMenuItem(
+              value: 2,
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.exit_to_app),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text("Exit"),
+                ],
+              ),
+            ),
+          ],
         ),
+        // MaterialButton(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: Image.asset(
+        //     "assets/images/info_btn.png",
+        //     fit: BoxFit.contain,
+        //   ),
+        //   onPressed: () {},
+        // ),
         actions: <Widget>[
           Container(
             width: kToolbarHeight,
