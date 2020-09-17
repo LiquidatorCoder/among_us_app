@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:among_us_app/generateButton.dart';
 import 'package:among_us_app/starPainter.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -75,14 +77,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        // MaterialButton(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: Image.asset(
-        //     "assets/images/info_btn.png",
-        //     fit: BoxFit.contain,
-        //   ),
-        //   onPressed: () {},
-        // ),
         actions: <Widget>[
           Container(
             width: kToolbarHeight,
@@ -92,13 +86,63 @@ class _HomePageState extends State<HomePage> {
                 "assets/images/share_btn.png",
                 fit: BoxFit.contain,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Share.share(
+                    "Hey, See what I created on the Among Us Avatar App.");
+              },
             ),
           ),
         ],
       ),
-      body: Stack(
-        children: stars(MediaQuery.of(context).size),
+      body: SlidingUpPanel(
+        minHeight: 125,
+        maxHeight: 400,
+        parallaxEnabled: true,
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+        collapsed: Stack(
+          alignment: Alignment.bottomCenter,
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25)),
+                border: Border.all(color: Colors.white, width: 4),
+                color: Colors.black,
+              ),
+              margin: EdgeInsets.all(0),
+              child: SizedBox.expand(),
+            ),
+            Positioned(
+                child: Container(
+              color: Colors.black,
+              width: MediaQuery.of(context).size.width - 8,
+              height: 6,
+            ))
+          ],
+        ),
+        body: Stack(
+          alignment: Alignment.topCenter,
+          children: <Widget>[
+            Stack(
+              children: stars(MediaQuery.of(context).size),
+            ),
+            Image.asset(
+              "assets/images/Cyan.png",
+              height: 300,
+            )
+          ],
+        ),
+        panel: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+            border: Border.all(color: Colors.white, width: 4),
+            color: Colors.black,
+          ),
+          child: SizedBox.expand(),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: GenerateButton(),
