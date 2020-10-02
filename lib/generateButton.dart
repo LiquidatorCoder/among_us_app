@@ -18,11 +18,13 @@ class _GenerateButtonState extends State<GenerateButton>
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    controller = AnimationController(
+      duration: Duration(milliseconds: 300),
+      vsync: this,
+    );
     btnAnimation = Tween<double>(
       begin: 1.0,
-      end: 0.0,
+      end: 0.5,
     ).animate(
       CurvedAnimation(
         parent: controller,
@@ -47,7 +49,7 @@ class _GenerateButtonState extends State<GenerateButton>
           onPressed: () {
             HapticFeedback.vibrate();
             controller.forward();
-            Future.delayed(Duration(milliseconds: 100)).then((value) {
+            Future.delayed(Duration(milliseconds: 50)).then((value) {
               controller.reverse();
             });
           },
