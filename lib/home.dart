@@ -83,6 +83,7 @@ class _HomePageState extends State<HomePage> {
         minHeight: 125,
         maxHeight: 400,
         parallaxEnabled: true,
+        parallaxOffset: 0.8,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25), topRight: Radius.circular(25)),
         collapsed: Stack(
@@ -108,7 +109,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         body: Stack(
-          alignment: Alignment.topCenter,
+          alignment: Alignment.center,
           children: <Widget>[
             Stack(
               children: [
@@ -117,7 +118,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Image.asset(
               "assets/images/Cyan.png",
-              height: 300,
+              height: 200,
             )
           ],
         ),
