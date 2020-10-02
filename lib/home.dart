@@ -13,38 +13,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> stars(Size size) {
-    var r = Random();
-    List<Widget> starStack = [];
-    for (int particles = 0; particles < 30; particles++) {
-      double x = r.nextDouble() * size.width;
-      double y = r.nextDouble() * size.height;
-      double radius = r.nextDouble() * 4;
-      double velocity = r.nextDouble() * 4;
-      double opacity = radius / 4;
-      starStack.add(
-        // BackdropFilter(
-        // filter: ImageFilter.blur(sigmaX: 0.2, sigmaY: 0.2),
-        // child:
-        CustomPaint(
-          painter: StarPainter(
-              x: x, y: y, radius: radius, velocity: velocity, opacity: opacity),
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-          ),
-        ),
-        // ),
-      );
-    }
-    return starStack;
+  Widget stars;
+
+  @override
+  void initState() {
+    stars = Stars();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        brightness: Brightness.dark,
+        elevation: 0,
         leading: PopupMenuButton<int>(
           icon: Image.asset(
             "assets/images/info_btn.png",
@@ -126,7 +111,9 @@ class _HomePageState extends State<HomePage> {
           alignment: Alignment.topCenter,
           children: <Widget>[
             Stack(
-              children: stars(MediaQuery.of(context).size),
+              children: [
+                stars,
+              ],
             ),
             Image.asset(
               "assets/images/Cyan.png",
@@ -146,6 +133,18 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: GenerateButton(),
+    );
+  }
+}
+
+class Stars extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: StarPainter(particles: 30),
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+      ),
     );
   }
 }

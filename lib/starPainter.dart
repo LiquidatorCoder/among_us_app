@@ -1,23 +1,25 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class StarPainter extends CustomPainter {
-  double x;
-  double y;
-  double radius;
-  double velocity;
-  double opacity;
-  StarPainter(
-      {@required this.x,
-      @required this.y,
-      @required this.radius,
-      @required this.velocity,
-      @required this.opacity});
+  int particles;
+  StarPainter({@required this.particles});
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint();
-    paint.color = Colors.white.withOpacity(opacity);
-    var center = Offset(x, y);
-    canvas.drawCircle(center, radius, paint);
+    var paint = Paint();
+    var r = Random();
+    var center = Offset.zero;
+    for (int particles = 0; particles < 30; particles++) {
+      double x = r.nextDouble() * size.width;
+      double y = r.nextDouble() * size.height;
+      center = Offset(x, y);
+      double radius = r.nextDouble() * 4;
+      // double velocity = r.nextDouble() * 4;
+      double opacity = radius > 2 ? radius / 4 : 0.7;
+      paint.color = Colors.white.withOpacity(opacity);
+      canvas.drawCircle(center, radius, paint);
+    }
   }
 
   @override
