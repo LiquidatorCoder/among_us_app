@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:among_us_app/aboutDialog.dart';
 import 'package:among_us_app/bottomPanel.dart';
 import 'package:among_us_app/generateButton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
@@ -34,37 +36,17 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         brightness: Brightness.dark,
         elevation: 0,
-        leading: PopupMenuButton<int>(
+        leading: IconButton(
           icon: Image.asset(
             "assets/images/info_btn.png",
             fit: BoxFit.contain,
           ),
-          itemBuilder: (context) => [
-            PopupMenuItem(
-              value: 1,
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.settings_backup_restore),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text("Reset"),
-                ],
-              ),
-            ),
-            PopupMenuItem(
-              value: 2,
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.exit_to_app),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text("Exit"),
-                ],
-              ),
-            ),
-          ],
+          onPressed: () {
+            showCupertinoDialog(
+                context: context,
+                barrierDismissible: true,
+                builder: (BuildContext context) => InfoDialog());
+          },
         ),
         actions: <Widget>[
           Container(
