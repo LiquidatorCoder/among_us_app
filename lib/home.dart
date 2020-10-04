@@ -1,9 +1,11 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:among_us_app/bottomPanel.dart';
 import 'package:among_us_app/generateButton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:among_us_app/globals.dart' as globals;
@@ -15,7 +17,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Widget stars;
-
+  File _imageFile;
+  final ScreenshotController _screenshotController = ScreenshotController();
   @override
   void initState() {
     stars = Stars();
@@ -73,8 +76,29 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.contain,
               ),
               onPressed: () {
-                Share.share(
-                    "Hey, See what I created on the Among Us Avatar App.");
+                _screenshotController.capture().then((File image) {
+                  //Capture Done
+                  setState(() {
+                    _imageFile = image;
+                  });
+                  final RenderBox box = context.findRenderObject();
+                  if (Platform.isAndroid) {
+                    Share.shareFile(image,
+                        subject: 'Image created by Among Us Avatar Generator',
+                        text:
+                            'Hey, Look what I created with this amazing app called Among Us Avatar Generator.',
+                        sharePositionOrigin:
+                            box.localToGlobal(Offset.zero) & box.size);
+                  } else {
+                    Share.share(
+                        'Hey, Look what I created with this amazing app called Among Us Avatar Generator.',
+                        subject: 'Image created by Among Us Avatar Generator',
+                        sharePositionOrigin:
+                            box.localToGlobal(Offset.zero) & box.size);
+                  }
+                }).catchError((onError) {
+                  print(onError);
+                });
               },
             ),
           ),
@@ -117,13 +141,20 @@ class _HomePageState extends State<HomePage> {
                 stars,
               ],
             ),
-            Image.asset(
-              "assets/images/BG/BG${Provider.of<globals.RVProvider>(context).bgVariable}-01.png",
-              height: MediaQuery.of(context).size.width * 0.6,
-            ),
-            Image.asset(
-              "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
-              height: MediaQuery.of(context).size.width * 0.6,
+            Screenshot(
+              controller: _screenshotController,
+              child: Stack(
+                children: [
+                  Image.asset(
+                    "assets/images/BG/BG${Provider.of<globals.RVProvider>(context).bgVariable}-01.png",
+                    height: MediaQuery.of(context).size.width * 0.6,
+                  ),
+                  Image.asset(
+                    "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
+                    height: MediaQuery.of(context).size.width * 0.6,
+                  )
+                ],
+              ),
             )
           ],
         ),
