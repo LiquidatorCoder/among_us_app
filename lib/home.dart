@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Widget stars;
-  File _imageFile;
+  // File _imageFile;
   final ScreenshotController _screenshotController = ScreenshotController();
   @override
   void initState() {
@@ -61,19 +61,19 @@ class _HomePageState extends State<HomePage> {
                 _screenshotController.capture().then((File image) {
                   //Capture Done
                   setState(() {
-                    _imageFile = image;
+                    // _imageFile = image;
                   });
                   final RenderBox box = context.findRenderObject();
                   if (Platform.isAndroid) {
                     Share.shareFile(image,
                         subject: 'Image created by Among Us Avatar Generator',
                         text:
-                            'Hey, Look what I created with this amazing app called Among Us Avatar Generator.',
+                            'Hey, Look I created ${Provider.of<globals.RVProvider>(context, listen: false).nameVariable} with this amazing app called Among Us Avatar Generator.',
                         sharePositionOrigin:
                             box.localToGlobal(Offset.zero) & box.size);
                   } else {
                     Share.share(
-                        'Hey, Look what I created with this amazing app called Among Us Avatar Generator.',
+                        'Hey, Look I created ${Provider.of<globals.RVProvider>(context, listen: false).nameVariable} with this amazing app called Among Us Avatar Generator.',
                         subject: 'Image created by Among Us Avatar Generator',
                         sharePositionOrigin:
                             box.localToGlobal(Offset.zero) & box.size);
@@ -137,7 +137,14 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-            )
+            ),
+            Positioned(
+                bottom: MediaQuery.of(context).size.width * 0.68,
+                child: Text(
+                  Provider.of<globals.RVProvider>(context).nameVariable,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ))
           ],
         ),
         panel: GenerateBottomPanel(),

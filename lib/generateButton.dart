@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math' as math;
@@ -55,6 +56,8 @@ class _GenerateButtonState extends State<GenerateButton>
             Provider.of<globals.RVProvider>(context, listen: false)
                 .changeColorVariable(
                     math.Random().nextInt(globals.colorSize) + 1);
+            Provider.of<globals.RVProvider>(context, listen: false)
+                .changeNameVariable(Faker().lorem.word());
             HapticFeedback.vibrate();
             controller.forward();
             Future.delayed(Duration(milliseconds: 50)).then((value) {

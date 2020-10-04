@@ -8,6 +8,7 @@ class RVProvider extends ChangeNotifier {
   int colorVariable = 1;
   int bgVariable = 1;
   // int hatVariable = 1;
+  String nameVariable = "bot";
 
   int changeColorVariable(int newValue) {
     this.colorVariable = newValue;
@@ -59,4 +60,9 @@ class RVProvider extends ChangeNotifier {
   //   return this.hatVariable;
   // }
 
+  String changeNameVariable(String newValue) {
+    this.nameVariable = newValue;
+    notifyListeners();
+    return this.nameVariable;
+  }
 }
