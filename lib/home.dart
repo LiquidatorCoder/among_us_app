@@ -1,11 +1,13 @@
-import 'dart:math';
+import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:among_us_app/generateButton.dart';
 import 'package:among_us_app/starPainter.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:among_us_app/globals.dart' as globals;
 
 class HomePage extends StatefulWidget {
   @override
@@ -117,7 +119,11 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Image.asset(
-              "assets/images/Cyan.png",
+              "assets/images/BG/BG${Provider.of<globals.RVProvider>(context).bgVariable}-01.png",
+              height: 200,
+            ),
+            Image.asset(
+              "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
               height: 200,
             )
           ],

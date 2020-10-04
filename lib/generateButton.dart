@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:math' as math;
+import 'package:among_us_app/globals.dart' as globals;
+import 'package:provider/provider.dart';
 
 class GenerateButton extends StatefulWidget {
   const GenerateButton({
@@ -47,6 +50,10 @@ class _GenerateButtonState extends State<GenerateButton>
           padding: EdgeInsets.zero,
           child: Image.asset('assets/images/generate_btn.png'),
           onPressed: () {
+            Provider.of<globals.RVProvider>(context, listen: false)
+                .changeBGVariable(math.Random().nextInt(3) + 1);
+            Provider.of<globals.RVProvider>(context, listen: false)
+                .changeColorVariable(math.Random().nextInt(14) + 1);
             HapticFeedback.vibrate();
             controller.forward();
             Future.delayed(Duration(milliseconds: 50)).then((value) {

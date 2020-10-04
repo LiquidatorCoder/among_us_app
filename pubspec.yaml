@@ -29,6 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   share: ^0.6.5
   sliding_up_panel: ^1.0.2
+  provider: ^4.3.2+2
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +46,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/CH/
+    - assets/images/BG/
     - assets/images/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -70,3 +73,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
