@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 
 final int colorSize = 14;
 final int bgSize = 3;
-// final int hatSize = 3;
+final int hatSize = 7;
+final int skinSize = 4;
 
 class RVProvider extends ChangeNotifier {
   int colorVariable = 1;
   int bgVariable = 1;
-  // int hatVariable = 1;
+  int hatVariable = 1;
+  int skinVariable = 1;
   String nameVariable = "bot";
 
   int changeColorVariable(int newValue) {
@@ -43,22 +45,38 @@ class RVProvider extends ChangeNotifier {
     return this.bgVariable;
   }
 
-  // int changeHatVariable(int newValue) {
-  //   this.hatVariable = newValue;
-  //   notifyListeners();
-  //   return this.hatVariable;
-  // }
+  int changeHatVariable(int newValue) {
+    this.hatVariable = newValue;
+    notifyListeners();
+    return this.hatVariable;
+  }
 
-  // int shiftHatVariable(bool add) {
-  //   if (add == false) {
-  //     if (this.hatVariable != 1) this.hatVariable = this.hatVariable - 1;
-  //   } else {
-  //     if (this.hatVariable != hatSize)
-  //       this.hatVariable = this.hatVariable + 1;
-  //   }
-  //   notifyListeners();
-  //   return this.hatVariable;
-  // }
+  int shiftHatVariable(bool add) {
+    if (add == false) {
+      if (this.hatVariable != 1) this.hatVariable = this.hatVariable - 1;
+    } else {
+      if (this.hatVariable != hatSize) this.hatVariable = this.hatVariable + 1;
+    }
+    notifyListeners();
+    return this.hatVariable;
+  }
+
+  int changeSkinVariable(int newValue) {
+    this.skinVariable = newValue;
+    notifyListeners();
+    return this.skinVariable;
+  }
+
+  int shiftSkinVariable(bool add) {
+    if (add == false) {
+      if (this.skinVariable != 1) this.skinVariable = this.skinVariable - 1;
+    } else {
+      if (this.skinVariable != skinSize)
+        this.skinVariable = this.skinVariable + 1;
+    }
+    notifyListeners();
+    return this.skinVariable;
+  }
 
   String changeNameVariable(String newValue) {
     this.nameVariable = newValue;

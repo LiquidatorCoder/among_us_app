@@ -84,37 +84,68 @@ class GenerateBottomPanel extends StatelessWidget {
                     }),
               ],
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //     IconButton(
-            //         icon: Icon(
-            //           Icons.chevron_left,
-            //           color: Colors.white,
-            //         ),
-            //         onPressed: () {
-            //           Provider.of<globals.RVProvider>(context, listen: false)
-            //               .shiftHatVariable(false);
-            //         }),
-            //     Container(
-            //       width: MediaQuery.of(context).size.width * 0.4,
-            //       child: Text(
-            //         "HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
-            //         textAlign: TextAlign.center,
-            //         style: TextStyle(color: Colors.white),
-            //       ),
-            //     ),
-            //     IconButton(
-            //         icon: Icon(
-            //           Icons.chevron_right,
-            //           color: Colors.white,
-            //         ),
-            //         onPressed: () {
-            //           Provider.of<globals.RVProvider>(context, listen: false)
-            //               .shiftHatVariable(true);
-            //         }),
-            //   ],
-            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.chevron_left,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Provider.of<globals.RVProvider>(context, listen: false)
+                          .shiftHatVariable(false);
+                    }),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: Text(
+                    "HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                IconButton(
+                    icon: Icon(
+                      Icons.chevron_right,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Provider.of<globals.RVProvider>(context, listen: false)
+                          .shiftHatVariable(true);
+                    }),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.chevron_left,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Provider.of<globals.RVProvider>(context, listen: false)
+                          .shiftSkinVariable(false);
+                    }),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: Text(
+                    "HT${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                IconButton(
+                    icon: Icon(
+                      Icons.chevron_right,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Provider.of<globals.RVProvider>(context, listen: false)
+                          .shiftSkinVariable(true);
+                    }),
+              ],
+            ),
           ],
         ),
       ),
