@@ -99,7 +99,7 @@ class GenerateBottomPanel extends StatelessWidget {
             //     Container(
             //       width: MediaQuery.of(context).size.width * 0.4,
             //       child: Text(
-            //         "Hat${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
+            //         "HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
             //         textAlign: TextAlign.center,
             //         style: TextStyle(color: Colors.white),
             //       ),
