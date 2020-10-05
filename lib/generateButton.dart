@@ -57,10 +57,10 @@ class _GenerateButtonState extends State<GenerateButton>
                 .changeColorVariable(
                     math.Random().nextInt(globals.colorSize) + 1);
             Provider.of<globals.RVProvider>(context, listen: false)
-                .changeHatVariable(math.Random().nextInt(globals.hatSize) + 1);
+                .changeHatVariable(math.Random().nextInt(globals.hatSize + 1));
             Provider.of<globals.RVProvider>(context, listen: false)
                 .changeSkinVariable(
-                    math.Random().nextInt(globals.skinSize) + 1);
+                    math.Random().nextInt(globals.skinSize + 1));
             Provider.of<globals.RVProvider>(context, listen: false)
                 .changeNameVariable(Faker().lorem.word());
             HapticFeedback.vibrate();

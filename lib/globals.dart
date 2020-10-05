@@ -8,8 +8,8 @@ final int skinSize = 4;
 class RVProvider extends ChangeNotifier {
   int colorVariable = 1;
   int bgVariable = 1;
-  int hatVariable = 1;
-  int skinVariable = 1;
+  int hatVariable = 0;
+  int skinVariable = 0;
   String nameVariable = "bot";
 
   int changeColorVariable(int newValue) {
@@ -53,7 +53,11 @@ class RVProvider extends ChangeNotifier {
 
   int shiftHatVariable(bool add) {
     if (add == false) {
-      if (this.hatVariable != 1) this.hatVariable = this.hatVariable - 1;
+      if (this.hatVariable != 1 && this.hatVariable > 0) {
+        this.hatVariable = this.hatVariable - 1;
+      } else {
+        this.hatVariable = 0;
+      }
     } else {
       if (this.hatVariable != hatSize) this.hatVariable = this.hatVariable + 1;
     }
@@ -69,7 +73,11 @@ class RVProvider extends ChangeNotifier {
 
   int shiftSkinVariable(bool add) {
     if (add == false) {
-      if (this.skinVariable != 1) this.skinVariable = this.skinVariable - 1;
+      if (this.skinVariable != 1 && this.skinVariable > 0) {
+        this.skinVariable = this.skinVariable - 1;
+      } else {
+        this.skinVariable = 0;
+      }
     } else {
       if (this.skinVariable != skinSize)
         this.skinVariable = this.skinVariable + 1;

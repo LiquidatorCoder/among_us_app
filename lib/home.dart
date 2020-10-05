@@ -135,14 +135,17 @@ class _HomePageState extends State<HomePage> {
                     "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
                     height: MediaQuery.of(context).size.width * 0.6,
                   ),
-                  Image.asset(
-                    "assets/images/HT/HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
-                    height: MediaQuery.of(context).size.width * 0.6,
-                  ),
-                  Image.asset(
-                    "assets/images/SK/SK${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
-                    height: MediaQuery.of(context).size.width * 0.6,
-                  )
+                  if (Provider.of<globals.RVProvider>(context).hatVariable != 0)
+                    Image.asset(
+                      "assets/images/HT/HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
+                      height: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                  if (Provider.of<globals.RVProvider>(context).skinVariable !=
+                      0)
+                    Image.asset(
+                      "assets/images/SK/SK${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
+                      height: MediaQuery.of(context).size.width * 0.6,
+                    )
                 ],
               ),
             ),

@@ -99,7 +99,9 @@ class GenerateBottomPanel extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Text(
-                    "HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
+                    Provider.of<globals.RVProvider>(context).hatVariable != 0
+                        ? "HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png"
+                        : "None",
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white),
                   ),
@@ -130,7 +132,9 @@ class GenerateBottomPanel extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Text(
-                    "HT${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
+                    Provider.of<globals.RVProvider>(context).skinVariable != 0
+                        ? "SK${Provider.of<globals.RVProvider>(context).skinVariable}-01.png"
+                        : "None",
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white),
                   ),
