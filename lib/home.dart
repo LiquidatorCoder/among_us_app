@@ -87,10 +87,10 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SlidingUpPanel(
-        minHeight: 125,
-        maxHeight: 400,
+        minHeight: 65,
+        maxHeight: 300,
         parallaxEnabled: true,
-        parallaxOffset: 0.7,
+        parallaxOffset: 0.5,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25), topRight: Radius.circular(25)),
         collapsed: Stack(
@@ -105,7 +105,23 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.black,
               ),
               margin: EdgeInsets.all(0),
-              child: SizedBox.expand(),
+              child: SizedBox.expand(
+                  // child: Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Icon(
+                  //       Icons.keyboard_arrow_up_rounded,
+                  //       color: Colors.white,
+                  //     ),
+                  //     SizedBox(width: 20),
+                  //     Icon(
+                  //       Icons.keyboard_arrow_up_rounded,
+                  //       color: Colors.white,
+                  //     ),
+                  //   ],
+                  // ),
+                  ),
             ),
             Positioned(
                 child: Container(

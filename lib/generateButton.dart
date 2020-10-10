@@ -44,7 +44,7 @@ class _GenerateButtonState extends State<GenerateButton>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 80),
+      margin: EdgeInsets.only(bottom: 20),
       child: ScaleTransition(
         scale: btnAnimation,
         child: MaterialButton(
