@@ -7,6 +7,7 @@ import 'package:among_us_app/generateButton.dart';
 import 'package:among_us_app/starPainter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
@@ -21,7 +22,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // final Widget stars = Stars();
   // File _imageFile;
-  final ScreenshotController _screenshotController = ScreenshotController();
+  final ScreenshotController screenshotController = ScreenshotController();
+  final PanelController panelController = PanelController();
   @override
   void initState() {
     super.initState();
@@ -58,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.contain,
               ),
               onPressed: () {
-                _screenshotController.capture(pixelRatio: 3).then((File image) {
+                screenshotController.capture(pixelRatio: 3).then((File image) {
                   //Capture Done
                   setState(() {});
                   final RenderBox box = context.findRenderObject();
@@ -85,6 +87,8 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SlidingUpPanel(
+        backdropTapClosesPanel: true,
+        controller: panelController,
         minHeight: 65,
         maxHeight: 300,
         parallaxEnabled: true,
@@ -93,7 +97,9 @@ class _HomePageState extends State<HomePage> {
             topLeft: Radius.circular(25), topRight: Radius.circular(25)),
         collapsed: CollapsedPanel(),
         body: PanelBody(
-            stars: Stars(), screenshotController: _screenshotController),
+            stars: Stars(),
+            screenshotController: screenshotController,
+            panelController: panelController),
         panel: GenerateBottomPanel(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -107,55 +113,69 @@ class PanelBody extends StatelessWidget {
     Key key,
     @required this.stars,
     @required ScreenshotController screenshotController,
+    @required this.panelController,
   })  : _screenshotController = screenshotController,
         super(key: key);
 
   final Widget stars;
   final ScreenshotController _screenshotController;
+  final PanelController panelController;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: <Widget>[
-        Stack(
-          children: [
-            stars,
-          ],
-        ),
-        Screenshot(
-          controller: _screenshotController,
-          child: Stack(
+    return GestureDetector(
+      onPanUpdate: (details) {
+        if (details.delta.dy < -10) {
+          panelController.open();
+          HapticFeedback.vibrate();
+        }
+        if (details.delta.dy > 10) {
+          panelController.close();
+          HapticFeedback.vibrate();
+        }
+      },
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Stack(
             children: [
-              Image.asset(
-                "assets/images/BG/BG${Provider.of<globals.RVProvider>(context).bgVariable}-01.png",
-                height: MediaQuery.of(context).size.width * 0.6,
-              ),
-              Image.asset(
-                "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
-                height: MediaQuery.of(context).size.width * 0.6,
-              ),
-              if (Provider.of<globals.RVProvider>(context).hatVariable != 0)
-                Image.asset(
-                  "assets/images/HT/HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
-                  height: MediaQuery.of(context).size.width * 0.6,
-                ),
-              if (Provider.of<globals.RVProvider>(context).skinVariable != 0)
-                Image.asset(
-                  "assets/images/SK/SK${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
-                  height: MediaQuery.of(context).size.width * 0.6,
-                )
+              stars,
             ],
           ),
-        ),
-        Positioned(
-            bottom: MediaQuery.of(context).size.width * 0.68,
-            child: Text(
-              Provider.of<globals.RVProvider>(context).nameVariable,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ))
-      ],
+          Screenshot(
+            controller: _screenshotController,
+            child: Stack(
+              children: [
+                Image.asset(
+                  "assets/images/BG/BG${Provider.of<globals.RVProvider>(context).bgVariable}-01.png",
+                  height: MediaQuery.of(context).size.width * 0.6,
+                ),
+                Image.asset(
+                  "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
+                  height: MediaQuery.of(context).size.width * 0.6,
+                ),
+                if (Provider.of<globals.RVProvider>(context).hatVariable != 0)
+                  Image.asset(
+                    "assets/images/HT/HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
+                    height: MediaQuery.of(context).size.width * 0.6,
+                  ),
+                if (Provider.of<globals.RVProvider>(context).skinVariable != 0)
+                  Image.asset(
+                    "assets/images/SK/SK${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
+                    height: MediaQuery.of(context).size.width * 0.6,
+                  )
+              ],
+            ),
+          ),
+          Positioned(
+              bottom: MediaQuery.of(context).size.width * 0.68,
+              child: Text(
+                Provider.of<globals.RVProvider>(context).nameVariable,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ))
+        ],
+      ),
     );
   }
 }
