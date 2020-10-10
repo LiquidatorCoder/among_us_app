@@ -220,6 +220,22 @@ class GenerateBottomPanel extends StatelessWidget {
                             : null),
               ],
             ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 8, 8),
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.crop,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Provider.of<globals.RVProvider>(context, listen: false)
+                            .changeCropStyle();
+                      }),
+                )
+              ],
+            )
           ],
         ),
       ),

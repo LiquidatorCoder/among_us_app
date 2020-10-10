@@ -12,6 +12,19 @@ class RVProvider extends ChangeNotifier {
   int hatVariable = 0;
   int skinVariable = 0;
   String nameVariable = "bot";
+  String cropStyle = "round";
+
+  String changeCropStyle() {
+    if (this.cropStyle == "round") {
+      this.cropStyle = "rrect";
+    } else if (this.cropStyle == "rrect") {
+      this.cropStyle = "square";
+    } else if (this.cropStyle == "square") {
+      this.cropStyle = "round";
+    }
+    notifyListeners();
+    return this.cropStyle;
+  }
 
   int changeColorVariable(int newValue) {
     this.colorVariable = newValue;

@@ -143,30 +143,22 @@ class PanelBody extends StatelessWidget {
             ],
           ),
           Screenshot(
-            controller: _screenshotController,
-            child: Stack(
-              children: [
-                Image.asset(
-                  "assets/images/BG/BG${Provider.of<globals.RVProvider>(context).bgVariable}-01.png",
-                  height: MediaQuery.of(context).size.width * 0.6,
-                ),
-                Image.asset(
-                  "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
-                  height: MediaQuery.of(context).size.width * 0.6,
-                ),
-                if (Provider.of<globals.RVProvider>(context).hatVariable != 0)
-                  Image.asset(
-                    "assets/images/HT/HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
-                    height: MediaQuery.of(context).size.width * 0.6,
-                  ),
-                if (Provider.of<globals.RVProvider>(context).skinVariable != 0)
-                  Image.asset(
-                    "assets/images/SK/SK${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
-                    height: MediaQuery.of(context).size.width * 0.6,
-                  )
-              ],
-            ),
-          ),
+              controller: _screenshotController,
+              child: Provider.of<globals.RVProvider>(context).cropStyle ==
+                      "round"
+                  ? ClipOval(
+                      child: GeneratedAvatar(),
+                    )
+                  : Provider.of<globals.RVProvider>(context).cropStyle ==
+                          "square"
+                      ? GeneratedAvatar()
+                      : Provider.of<globals.RVProvider>(context).cropStyle ==
+                              "rrect"
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: GeneratedAvatar(),
+                            )
+                          : GeneratedAvatar()),
           Positioned(
               bottom: MediaQuery.of(context).size.width * 0.68,
               child: Text(
@@ -176,6 +168,38 @@ class PanelBody extends StatelessWidget {
               ))
         ],
       ),
+    );
+  }
+}
+
+class GeneratedAvatar extends StatelessWidget {
+  const GeneratedAvatar({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Image.asset(
+          "assets/images/BG/BG${Provider.of<globals.RVProvider>(context).bgVariable}-01.png",
+          height: MediaQuery.of(context).size.width * 0.6,
+        ),
+        Image.asset(
+          "assets/images/CH/CH${Provider.of<globals.RVProvider>(context).colorVariable}-01.png",
+          height: MediaQuery.of(context).size.width * 0.6,
+        ),
+        if (Provider.of<globals.RVProvider>(context).hatVariable != 0)
+          Image.asset(
+            "assets/images/HT/HT${Provider.of<globals.RVProvider>(context).hatVariable}-01.png",
+            height: MediaQuery.of(context).size.width * 0.6,
+          ),
+        if (Provider.of<globals.RVProvider>(context).skinVariable != 0)
+          Image.asset(
+            "assets/images/SK/SK${Provider.of<globals.RVProvider>(context).skinVariable}-01.png",
+            height: MediaQuery.of(context).size.width * 0.6,
+          )
+      ],
     );
   }
 }
