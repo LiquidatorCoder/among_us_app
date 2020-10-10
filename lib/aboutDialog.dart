@@ -17,32 +17,80 @@ class InfoDialog extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(top: 20),
               child: Text("Developed and Maintained by")),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-            child: Material(
-              elevation: 0,
-              color: Colors.white54,
-              borderRadius: BorderRadius.circular(20),
-              child: new ListTile(
-                leading: Container(
-                    padding: EdgeInsets.only(right: 12.0),
-                    decoration: new BoxDecoration(
-                      border: new Border(
-                        right:
-                            new BorderSide(width: 1.0, color: Colors.white54),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+              String link = "https://github.com/codenameakshay";
+              _launchURL(link);
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+              child: Material(
+                elevation: 0,
+                color: Colors.white54,
+                borderRadius: BorderRadius.circular(20),
+                child: new ListTile(
+                  leading: Container(
+                      padding: EdgeInsets.only(right: 12.0),
+                      decoration: new BoxDecoration(
+                        border: new Border(
+                          right:
+                              new BorderSide(width: 1.0, color: Colors.white54),
+                        ),
                       ),
-                    ),
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/Cyan.png"),
-                    )),
-                title: Text(
-                  "Hash Studios",
-                  style: TextStyle(
-                      color: Colors.black87, fontWeight: FontWeight.bold),
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage("assets/images/AK.jpg"),
+                      )),
+                  title: Text(
+                    "Akshay Maurya",
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    "@codenameakshay",
+                    style: TextStyle(fontSize: 10, color: Colors.black87),
+                  ),
                 ),
-                subtitle: Text(
-                  "India",
-                  style: TextStyle(color: Colors.black87),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+              String link = "https://github.com/LiquidatorCoder";
+              _launchURL(link);
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
+              child: Material(
+                elevation: 0,
+                color: Colors.white54,
+                borderRadius: BorderRadius.circular(20),
+                child: new ListTile(
+                  leading: Container(
+                      padding: EdgeInsets.only(right: 12.0),
+                      decoration: new BoxDecoration(
+                        border: new Border(
+                          right:
+                              new BorderSide(width: 1.0, color: Colors.white54),
+                        ),
+                      ),
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage("assets/images/AB.jpg"),
+                      )),
+                  title: Text(
+                    "Abhay Maurya",
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    "@LiquidatorCoder",
+                    style: TextStyle(fontSize: 10, color: Colors.black87),
+                  ),
                 ),
               ),
             ),
@@ -58,7 +106,7 @@ class InfoDialog extends StatelessWidget {
           child: Text("Github"),
           onPressed: () {
             Navigator.of(context).pop();
-            String link = "https://www.github.com/Hash-Studios";
+            String link = "https://github.com/LiquidatorCoder/among_us_app";
             _launchURL(link);
           },
         ),
