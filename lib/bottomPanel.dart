@@ -27,12 +27,20 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_left,
-                      color: Colors.white,
+                      color:
+                          Provider.of<globals.RVProvider>(context).bgVariable !=
+                                  1
+                              ? Colors.white
+                              : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftBGVariable(false);
-                    }),
+                    onPressed:
+                        Provider.of<globals.RVProvider>(context).bgVariable != 1
+                            ? () {
+                                Provider.of<globals.RVProvider>(context,
+                                        listen: false)
+                                    .shiftBGVariable(false);
+                              }
+                            : null),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Text(
@@ -44,12 +52,21 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_right,
-                      color: Colors.white,
+                      color:
+                          Provider.of<globals.RVProvider>(context).bgVariable !=
+                                  globals.bgSize
+                              ? Colors.white
+                              : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftBGVariable(true);
-                    }),
+                    onPressed:
+                        Provider.of<globals.RVProvider>(context).bgVariable !=
+                                globals.bgSize
+                            ? () {
+                                Provider.of<globals.RVProvider>(context,
+                                        listen: false)
+                                    .shiftBGVariable(true);
+                              }
+                            : null),
               ],
             ),
             Row(
@@ -58,12 +75,21 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_left,
-                      color: Colors.white,
+                      color: Provider.of<globals.RVProvider>(context)
+                                  .colorVariable !=
+                              1
+                          ? Colors.white
+                          : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftColorVariable(false);
-                    }),
+                    onPressed: Provider.of<globals.RVProvider>(context)
+                                .colorVariable !=
+                            1
+                        ? () {
+                            Provider.of<globals.RVProvider>(context,
+                                    listen: false)
+                                .shiftColorVariable(false);
+                          }
+                        : null),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Text(
@@ -75,12 +101,21 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_right,
-                      color: Colors.white,
+                      color: Provider.of<globals.RVProvider>(context)
+                                  .colorVariable !=
+                              globals.colorSize
+                          ? Colors.white
+                          : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftColorVariable(true);
-                    }),
+                    onPressed: Provider.of<globals.RVProvider>(context)
+                                .colorVariable !=
+                            globals.colorSize
+                        ? () {
+                            Provider.of<globals.RVProvider>(context,
+                                    listen: false)
+                                .shiftColorVariable(true);
+                          }
+                        : null),
               ],
             ),
             Row(
@@ -89,12 +124,21 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_left,
-                      color: Colors.white,
+                      color: Provider.of<globals.RVProvider>(context)
+                                  .hatVariable !=
+                              0
+                          ? Colors.white
+                          : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftHatVariable(false);
-                    }),
+                    onPressed:
+                        Provider.of<globals.RVProvider>(context).hatVariable !=
+                                0
+                            ? () {
+                                Provider.of<globals.RVProvider>(context,
+                                        listen: false)
+                                    .shiftHatVariable(false);
+                              }
+                            : null),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Text(
@@ -108,12 +152,21 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_right,
-                      color: Colors.white,
+                      color: Provider.of<globals.RVProvider>(context)
+                                  .hatVariable !=
+                              globals.hatSize
+                          ? Colors.white
+                          : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftHatVariable(true);
-                    }),
+                    onPressed:
+                        Provider.of<globals.RVProvider>(context).hatVariable !=
+                                globals.hatSize
+                            ? () {
+                                Provider.of<globals.RVProvider>(context,
+                                        listen: false)
+                                    .shiftHatVariable(true);
+                              }
+                            : null),
               ],
             ),
             Row(
@@ -122,12 +175,21 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_left,
-                      color: Colors.white,
+                      color: Provider.of<globals.RVProvider>(context)
+                                  .skinVariable !=
+                              0
+                          ? Colors.white
+                          : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftSkinVariable(false);
-                    }),
+                    onPressed:
+                        Provider.of<globals.RVProvider>(context).skinVariable !=
+                                0
+                            ? () {
+                                Provider.of<globals.RVProvider>(context,
+                                        listen: false)
+                                    .shiftSkinVariable(false);
+                              }
+                            : null),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Text(
@@ -141,12 +203,21 @@ class GenerateBottomPanel extends StatelessWidget {
                 IconButton(
                     icon: Icon(
                       Icons.chevron_right,
-                      color: Colors.white,
+                      color: Provider.of<globals.RVProvider>(context)
+                                  .skinVariable !=
+                              globals.skinSize
+                          ? Colors.white
+                          : Colors.black,
                     ),
-                    onPressed: () {
-                      Provider.of<globals.RVProvider>(context, listen: false)
-                          .shiftSkinVariable(true);
-                    }),
+                    onPressed:
+                        Provider.of<globals.RVProvider>(context).skinVariable !=
+                                globals.skinSize
+                            ? () {
+                                Provider.of<globals.RVProvider>(context,
+                                        listen: false)
+                                    .shiftSkinVariable(true);
+                              }
+                            : null),
               ],
             ),
           ],
