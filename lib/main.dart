@@ -1,5 +1,6 @@
 import 'package:among_us_app/globals.dart';
 import 'package:among_us_app/home.dart';
+import 'package:among_us_app/starPainter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,11 +18,22 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MultiProvider(providers: [
-        ChangeNotifierProvider(
-          create: (context) => RVProvider(),
-        )
-      ], child: HomePage()),
+      home: HomeWidget(),
     );
+  }
+}
+
+class HomeWidget extends StatelessWidget {
+  const HomeWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(providers: [
+      ChangeNotifierProvider(
+        create: (context) => RVProvider(),
+      )
+    ], child: HomePage());
   }
 }

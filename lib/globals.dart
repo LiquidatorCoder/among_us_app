@@ -4,6 +4,7 @@ final int colorSize = 14;
 final int bgSize = 3;
 final int hatSize = 7;
 final int skinSize = 4;
+Map<int, List> particlesInfo = {};
 
 class RVProvider extends ChangeNotifier {
   int colorVariable = 1;

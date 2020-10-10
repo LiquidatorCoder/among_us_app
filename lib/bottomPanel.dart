@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:among_us_app/starPainter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:among_us_app/globals.dart' as globals;
@@ -152,18 +151,6 @@ class GenerateBottomPanel extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Stars extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: StarPainter(particles: 30),
-      child: Container(
-        height: MediaQuery.of(context).size.height,
       ),
     );
   }
