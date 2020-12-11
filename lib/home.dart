@@ -20,13 +20,40 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final Widget stars = Stars();
-  // File _imageFile;
   final ScreenshotController screenshotController = ScreenshotController();
   final PanelController panelController = PanelController();
   @override
   void initState() {
     super.initState();
+  }
+
+  void showMenu() {
+    showCupertinoDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) => InfoDialog());
+  }
+
+  void shareAvatar() {
+    screenshotController.capture(pixelRatio: 3).then((File image) {
+      //Capture Done
+      setState(() {});
+      final RenderBox box = context.findRenderObject();
+      if (Platform.isAndroid) {
+        Share.shareFile(image,
+            subject: 'Image created by Among Us Avatar Generator',
+            text:
+                'Hey, Look I created ${Provider.of<globals.RVProvider>(context, listen: false).nameVariable} with this amazing app called Among Us Avatar Generator.',
+            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+      } else {
+        Share.share(
+            'Hey, Look I created ${Provider.of<globals.RVProvider>(context, listen: false).nameVariable} with this amazing app called Among Us Avatar Generator.',
+            subject: 'Image created by Among Us Avatar Generator',
+            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+      }
+    }).catchError((onError) {
+      print(onError);
+    });
   }
 
   @override
@@ -38,51 +65,12 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         brightness: Brightness.dark,
         elevation: 0,
-        leading: IconButton(
-          icon: Image.asset(
-            "assets/images/info_btn.png",
-            fit: BoxFit.contain,
-          ),
-          onPressed: () {
-            showCupertinoDialog(
-                context: context,
-                barrierDismissible: true,
-                builder: (BuildContext context) => InfoDialog());
-          },
+        leading: SettingsButton(
+          onPressed: showMenu,
         ),
         actions: <Widget>[
-          Container(
-            width: kToolbarHeight,
-            child: MaterialButton(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                "assets/images/share_btn.png",
-                fit: BoxFit.contain,
-              ),
-              onPressed: () {
-                screenshotController.capture(pixelRatio: 3).then((File image) {
-                  //Capture Done
-                  setState(() {});
-                  final RenderBox box = context.findRenderObject();
-                  if (Platform.isAndroid) {
-                    Share.shareFile(image,
-                        subject: 'Image created by Among Us Avatar Generator',
-                        text:
-                            'Hey, Look I created ${Provider.of<globals.RVProvider>(context, listen: false).nameVariable} with this amazing app called Among Us Avatar Generator.',
-                        sharePositionOrigin:
-                            box.localToGlobal(Offset.zero) & box.size);
-                  } else {
-                    Share.share(
-                        'Hey, Look I created ${Provider.of<globals.RVProvider>(context, listen: false).nameVariable} with this amazing app called Among Us Avatar Generator.',
-                        subject: 'Image created by Among Us Avatar Generator',
-                        sharePositionOrigin:
-                            box.localToGlobal(Offset.zero) & box.size);
-                  }
-                }).catchError((onError) {
-                  print(onError);
-                });
-              },
-            ),
+          ShareButton(
+            onPressed: shareAvatar,
           ),
         ],
       ),
@@ -90,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         backdropTapClosesPanel: true,
         controller: panelController,
         minHeight: 65,
-        maxHeight: 300,
+        maxHeight: 340,
         parallaxEnabled: true,
         parallaxOffset: 0.5,
         borderRadius: BorderRadius.only(
@@ -104,6 +92,47 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: GenerateButton(),
+    );
+  }
+}
+
+class ShareButton extends StatelessWidget {
+  final Function onPressed;
+  const ShareButton({
+    this.onPressed,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: kToolbarHeight,
+      child: IconButton(
+        icon: Image.asset(
+          "assets/images/share_btn.png",
+          fit: BoxFit.contain,
+        ),
+        onPressed: onPressed,
+      ),
+    );
+  }
+}
+
+class SettingsButton extends StatelessWidget {
+  final Function onPressed;
+  const SettingsButton({
+    this.onPressed,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Image.asset(
+        "assets/images/info_btn.png",
+        fit: BoxFit.contain,
+      ),
+      onPressed: onPressed,
     );
   }
 }
@@ -142,30 +171,37 @@ class PanelBody extends StatelessWidget {
               stars,
             ],
           ),
-          Screenshot(
-              controller: _screenshotController,
-              child: Provider.of<globals.RVProvider>(context).cropStyle ==
-                      "round"
-                  ? ClipOval(
-                      child: GeneratedAvatar(),
-                    )
-                  : Provider.of<globals.RVProvider>(context).cropStyle ==
-                          "square"
-                      ? GeneratedAvatar()
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Screenshot(
+                  controller: _screenshotController,
+                  child: Provider.of<globals.RVProvider>(context).cropStyle ==
+                          "round"
+                      ? ClipOval(
+                          child: GeneratedAvatar(),
+                        )
                       : Provider.of<globals.RVProvider>(context).cropStyle ==
-                              "rrect"
-                          ? ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: GeneratedAvatar(),
-                            )
-                          : GeneratedAvatar()),
-          Positioned(
-              bottom: MediaQuery.of(context).size.width * 0.68,
-              child: Text(
-                Provider.of<globals.RVProvider>(context).nameVariable,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ))
+                              "square"
+                          ? GeneratedAvatar()
+                          : Provider.of<globals.RVProvider>(context)
+                                      .cropStyle ==
+                                  "rrect"
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: GeneratedAvatar(),
+                                )
+                              : GeneratedAvatar()),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  Provider.of<globals.RVProvider>(context).nameVariable,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );
@@ -222,23 +258,7 @@ class CollapsedPanel extends StatelessWidget {
             color: Colors.black,
           ),
           margin: EdgeInsets.all(0),
-          child: SizedBox.expand(
-              // child: Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: [
-              //     Icon(
-              //       Icons.keyboard_arrow_up_rounded,
-              //       color: Colors.white,
-              //     ),
-              //     SizedBox(width: 20),
-              //     Icon(
-              //       Icons.keyboard_arrow_up_rounded,
-              //       color: Colors.white,
-              //     ),
-              //   ],
-              // ),
-              ),
+          child: SizedBox.expand(),
         ),
         Positioned(
             child: Container(

@@ -21,6 +21,9 @@ class GenerateBottomPanel extends StatelessWidget {
       child: SizedBox.expand(
         child: Column(
           children: [
+            SizedBox(
+              height: 40,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -223,7 +226,7 @@ class GenerateBottomPanel extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 8, 8, 8),
+                  padding: const EdgeInsets.fromLTRB(24, 16, 8, 8),
                   child: IconButton(
                       icon: Icon(
                         Icons.crop,
