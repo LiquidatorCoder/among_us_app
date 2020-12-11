@@ -10,13 +10,13 @@ class InfoDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
-      title: new Text("Among Us Avatar Generator v1.0.0+1"),
+      title: new Text("Among Us Avatar Generator v1.1.0+1"),
       content: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Padding(
               padding: EdgeInsets.only(top: 20),
-              child: Text("Developed and Maintained by")),
+              child: Text("Meet the amazing devs")),
           GestureDetector(
             onTap: () {
               Navigator.of(context).pop();
@@ -96,7 +96,7 @@ class InfoDialog extends StatelessWidget {
             ),
           ),
           Text(
-            "This is an unofficial fan-made app.",
+            "This is an unofficial fan-made app.\nBut that's kinda sus!",
             style: TextStyle(fontSize: 12),
           ),
         ],
