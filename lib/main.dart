@@ -1,6 +1,5 @@
 import 'package:among_us_app/globals.dart';
 import 'package:among_us_app/home.dart';
-import 'package:among_us_app/starPainter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

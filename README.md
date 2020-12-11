@@ -47,7 +47,7 @@ Feel free to contact us for any issues, hash.studios.inc@gmail.com
 - Avatars saved in the highest possible quality always
 - Minimal design with smooth transitions and animations
 - Optimized storage using minimal packages
-- Application size about 12 MB
+- Application size about 8 MB
 ## Demo
 
 **Screens**
@@ -76,13 +76,6 @@ Feel free to contact us for any issues, hash.studios.inc@gmail.com
 | :-------------: | :-------------:  | :-------------:  | :-------------:  | :-------------:  |
 |     Splash Screen    |    Quick Action Menu    |    Settings     |     Themes      |     Notifications    |
 
-**Themes**
-
-| ![](demo/39.jpg) | ![](demo/40.jpg)| ![](demo/41.jpg)| ![](demo/42.jpg) | ![](demo/43.jpg)|
-| :-------------:  | :-------------: | :-------------: | :-------------:  | :-------------: |
-|  Frosty White  |Coffee|  AMOLED    |      Rose   |      Cotton  |
-
-...and 10 more!
 
 ## Support
 
@@ -151,10 +144,6 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-```
-
-```
-DISCLAIMER: Google Play and the Google Play logo are trademarks of Google LLC.
 ```
 
 ## Contributors
