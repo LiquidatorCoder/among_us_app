@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
         minHeight: 65,
         maxHeight: 340,
         parallaxEnabled: true,
-        parallaxOffset: 0.5,
+        parallaxOffset: 0.6,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25), topRight: Radius.circular(25)),
         collapsed: CollapsedPanel(),
@@ -174,6 +174,11 @@ class PanelBody extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.66,
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 20),
+                child: Image.asset("assets/images/logo.png"),
+              ),
               Screenshot(
                   controller: _screenshotController,
                   child: Provider.of<globals.RVProvider>(context).cropStyle ==
@@ -193,7 +198,7 @@ class PanelBody extends StatelessWidget {
                                 )
                               : GeneratedAvatar()),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 140),
                 child: Text(
                   Provider.of<globals.RVProvider>(context).nameVariable,
                   textAlign: TextAlign.center,
