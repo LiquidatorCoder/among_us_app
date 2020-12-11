@@ -1,6 +1,6 @@
 # <div align="center"><img src="android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" alt="icon" width=30> Among Us Avatar Generator</div>
 
-<div align="center">AUAG is a simple open-source avatar generator app for Android. It is built with Dart on top of Google's Flutter Framework.
+<div align="center"><b>AUAG</b> is a simple open-source avatar generator app for Android. It is built with Dart on top of Google's Flutter Framework.
 
 
 ![flutter](https://img.shields.io/badge/Flutter-Framework-green?logo=flutter)
@@ -11,7 +11,7 @@
 ![Stars](https://img.shields.io/github/stars/LiquidatorCoder/among_us_app)
 
 </div>
-<a href=''><img alt='Prism UI Mockup' src='demo/Prism_Mockup.png'/></a>
+<!-- <a href=''><img alt='Prism UI Mockup' src='demo/Prism_Mockup.png'/></a> -->
 
 <b>AUAG</b> brings you a simple tool to create, share your favourite among us avatars, and save them. You can create them randomly, or using the fine tune editor carefully. With features like random name generator and crop, you can create anything that you want!
 
@@ -52,29 +52,9 @@ Feel free to contact us for any issues, hash.studios.inc@gmail.com
 
 **Screens**
 
-| ![](demo/2.jpg) | ![](demo/3.jpg) | ![](demo/4.jpg) | ![](demo/5.jpg) | ![](demo/6.jpg) |
-| :-------------: | :-------------:  | :-------------:  | :-------------:  | :-------------:  |
-|     Home     |    Search WallHaven   |    Search Pexels     |     Color Picker       |     Color Based     |
-
-| ![](demo/7.jpg) | ![](demo/8.jpg) | ![](demo/9.jpg) | ![](demo/11.jpg) | ![](demo/12.jpg) |
-| :-------------:  | :-------------:  | :-------------:  | :-------------:  | :-------------:  |
-|    Favourites    |    Downloads     |     Setups       |    Setups Info    |     Profile     |
-
-| ![](demo/13.jpg) | ![](demo/14.jpg)| ![](demo/16.jpg)       | ![](demo/17.jpg)  | ![](demo/18.jpg) |
-| :-------------:  | :-------------: | :-------------:       | :-------------:  | :-------------:  |
-|  Upload Popup    |    Edit Wallpaper       |  Uploading Wallpaper    | Uploader's Profile   |     Scroll to Top Button       |
-
-| ![](demo/19.jpg) | ![](demo/20.jpg) | ![](demo/21.jpg)| ![](demo/23.jpg) | ![](demo/25.jpg) |
-| :-------------: | :-------------: | :-------------: | :-------------:  | :-------------:  |
-|     Categories     |     Collections    | Collection (Illustrations)  |    Setup Guidelines     |     Setup Upload       |
-
-| ![](demo/36.jpg) | ![](demo/38.jpg) | ![](demo/27.jpg)       | ![](demo/30.jpg)  | ![](demo/29.jpg)|
-| :-------------:  | :-------------:  | :-------------:       | :-------------:  | :-------------: |
-|     About Page       |     Premium Page    |  Wallpaper Display    | Clock for testing   | Wallpaper Info  |
-
-| ![](demo/33.jpg) | ![](demo/34.jpg) | ![](demo/35.jpg) | ![](demo/37.jpg) | ![](demo/22.jpg) |
-| :-------------: | :-------------:  | :-------------:  | :-------------:  | :-------------:  |
-|     Splash Screen    |    Quick Action Menu    |    Settings     |     Themes      |     Notifications    |
+| ![](examples/1.jpg) | ![](examples/3.jpg) | ![](examples/2.jpg) | ![](examples/4.jpg) |
+| :-------------: | :-------------:  | :-------------:  | :-------------:  |
+|     Home     |    Generate Ex   |    Editor     |     About       |
 
 
 ## Support
@@ -84,7 +64,7 @@ If you like what we do, and would want to help us continue doing it, consider sp
 <a href="https://www.buymeacoffee.com/HashStudios" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height=51 width=217></a>
 
 
-![Prism UI Mockup](demo/Prism_Mockup2.png)
+<!-- ![Prism UI Mockup](demo/Prism_Mockup2.png) -->
 
 ## Dependencies
 
